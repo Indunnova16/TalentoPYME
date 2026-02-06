@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentoPYME - Plan de Aplicacion RRHH</title>
+    <style>
+        :root {
+            --bg-primary: #0c1222;
+            --bg-secondary: #1a2332;
+            --bg-card: #243044;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border: #334155;
+            --accent-primary: #10B981;
+            --accent-secondary: #06D6A0;
+            --accent-blue: #3B82F6;
+            --accent-violet: #8B5CF6;
+            --accent-amber: #F59E0B;
+            --accent-red: #EF4444;
+            --accent-cyan: #06B6D4;
+            --accent-pink: #EC4899;
+            --accent-orange: #F97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #064e3b 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            margin-bottom: 2rem;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .meta-info span {
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 100;
+            overflow-x: auto;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 0.75rem;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .nav-list a:hover {
+            background: var(--bg-card);
+            color: var(--accent-primary);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-primary);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent-primary);
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+        /* Stats */
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg-card);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tr:hover td {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Module Cards */
+        .module-card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .module-card.green::before { background: var(--accent-primary); }
+        .module-card.blue::before { background: var(--accent-blue); }
+        .module-card.violet::before { background: var(--accent-violet); }
+        .module-card.amber::before { background: var(--accent-amber); }
+        .module-card.red::before { background: var(--accent-red); }
+        .module-card.cyan::before { background: var(--accent-cyan); }
+        .module-card.pink::before { background: var(--accent-pink); }
+        .module-card.orange::before { background: var(--accent-orange); }
+
+        .module-number {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            opacity: 0.1;
+        }
+
+        .module-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .module-legal {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--accent-amber);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-green { background: rgba(16, 185, 129, 0.2); color: var(--accent-primary); }
+        .badge-blue { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .badge-red { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+        .badge-amber { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+        .badge-violet { background: rgba(139, 92, 246, 0.2); color: var(--accent-violet); }
+
+        /* Wireframe */
+        .wireframe {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-phase {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        /* AI Section */
+        .ai-feature {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border: 1px solid var(--accent-violet);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .ai-feature h5 {
+            color: var(--accent-violet);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Legal Alert */
+        .legal-alert {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent-amber);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .legal-alert h5 {
+            color: var(--accent-amber);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Critical Module */
+        .critical {
+            border: 2px solid var(--accent-red);
+        }
+
+        .critical-badge {
+            background: var(--accent-red);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Architecture */
+        .architecture {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .arch-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .arch-modules {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .arch-module {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .arch-module.critical-mod {
+            border-color: var(--accent-red);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .arch-module.legal-mod {
+            border-color: var(--accent-amber);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .arch-modules {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .header { padding: 2rem 1rem; }
+            .logo { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+
+        /* Feature List */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h5 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Pricing comparison */
+        .pricing-compare {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .pricing-card.highlight {
+            border-color: var(--accent-primary);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--bg-secondary) 100%);
+        }
+
+        .pricing-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .pricing-card .period {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .pricing-card ul {
+            text-align: left;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">TalentoPYME</div>
+        <p class="subtitle">Sistema Integral de Gestion de Recursos Humanos para PYMEs Colombianas</p>
+        <p class="tagline">Del Excel al control total - 100% autonomo y legal</p>
+        <div class="meta-info">
+            <span>Version 1.0</span>
+            <span>Colombia 2026</span>
+            <span>Django + React + PostgreSQL</span>
+            <span>Con Inteligencia Artificial</span>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#problema">Problema</a></li>
+            <li><a href="#modulos">Modulos</a></li>
+            <li><a href="#colaboradores">Colaboradores</a></li>
+            <li><a href="#nomina">Nomina</a></li>
+            <li><a href="#sgsst">SG-SST</a></li>
+            <li><a href="#asistencia">Asistencia</a></li>
+            <li><a href="#vacaciones">Vacaciones</a></li>
+            <li><a href="#documentos">Documentos</a></li>
+            <li><a href="#habeasdata">Habeas Data</a></li>
+            <li><a href="#reportes">Reportes</a></li>
+            <li><a href="#ia">IA</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- Vision General -->
+        <section id="vision">
+            <h2>1. Vision General</h2>
+
+            <div class="card">
+                <h3>Proposito</h3>
+                <p><strong>TalentoPYME</strong> es una plataforma integral de gestion de recursos humanos disenada especificamente para PYMEs colombianas que actualmente manejan todo en Excel y necesitan:</p>
+                <ul>
+                    <li>Cumplir con la normatividad laboral colombiana (CST, Ley 100, Decreto 1072)</li>
+                    <li>Automatizar procesos de nomina, vacaciones y seguridad social</li>
+                    <li>Reducir riesgos legales y multas de la UGPP</li>
+                    <li>Tener trazabilidad y control de toda la informacion del personal</li>
+                    <li>Generar reportes para auditorias y requerimientos legales</li>
+                </ul>
+            </div>
+
+            <h3>Propuesta de Valor</h3>
+            <div class="grid grid-3">
+                <div class="stat-card">
+                    <div class="stat-value">-80%</div>
+                    <div class="stat-label">Tiempo en procesos<br>manuales de nomina</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Cumplimiento legal<br>CST, UGPP, SG-SST</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Multas por errores<br>en seguridad social</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Acceso a informacion<br>y autoservicio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">IA</div>
+                    <div class="stat-label">Asistente inteligente<br>para consultas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">PILA</div>
+                    <div class="stat-label">Integracion automatica<br>con operadores</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problema -->
+        <section id="problema">
+            <h2>2. El Problema</h2>
+
+            <div class="card">
+                <h3>Situacion Actual de las PYMEs</h3>
+                <p>Todas las empresas pequenas manejan un archivo de Excel para llevar el control de los empleados... pero porque no ayudarles con un tipo de ERP sencillo donde puedan gestionar mas organizadamente toda la informacion?</p>
+            </div>
+
+            <h3>Dolores Principales</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Consecuencia</th>
+                        <th>Solucion TalentoPYME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nomina en Excel con formulas</td>
+                        <td>Errores en calculos, demandas laborales</td>
+                        <td>Calculo automatico con validaciones legales</td>
+                    </tr>
+                    <tr>
+                        <td>No hay control de vencimientos</td>
+                        <td>Contratos vencidos, multas</td>
+                        <td>Alertas automaticas 30/15/7 dias antes</td>
+                    </tr>
+                    <tr>
+                        <td>Aportes a seguridad social manuales</td>
+                        <td>Errores PILA, sanciones UGPP</td>
+                        <td>Generacion automatica archivo PILA</td>
+                    </tr>
+                    <tr>
+                        <td>Sin SG-SST implementado</td>
+                        <td>Multas hasta 500 SMLV</td>
+                        <td>Modulo completo con evidencias</td>
+                    </tr>
+                    <tr>
+                        <td>Vacaciones sin control</td>
+                        <td>Acumulacion, provision incorrecta</td>
+                        <td>Saldos en tiempo real, proyecciones</td>
+                    </tr>
+                    <tr>
+                        <td>Documentos dispersos</td>
+                        <td>No se encuentran para auditorias</td>
+                        <td>Repositorio centralizado por empleado</td>
+                    </tr>
+                    <tr>
+                        <td>Sin Habeas Data</td>
+                        <td>Multas hasta 2,000 SMLV (SIC)</td>
+                        <td>Consentimientos y trazabilidad</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="legal-alert">
+                <h5>Riesgos Legales sin un Sistema Adecuado</h5>
+                <ul>
+                    <li><strong>UGPP:</strong> Multas por errores en aportes a seguridad social (hasta 500% del valor dejado de pagar)</li>
+                    <li><strong>MinTrabajo:</strong> Sanciones por incumplimiento SG-SST (hasta 500 SMLV)</li>
+                    <li><strong>SIC:</strong> Multas por violacion Habeas Data (hasta 2,000 SMLV)</li>
+                    <li><strong>Demandas laborales:</strong> Por liquidaciones mal calculadas, horas extras no pagadas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Arquitectura de Modulos -->
+        <section id="modulos">
+            <h2>3. Arquitectura de Modulos</h2>
+
+            <div class="architecture">
+                <div class="arch-title">TALENTO PYME</div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Sistema Integral de Gestion de RRHH</p>
+
+                <div class="arch-modules">
+                    <div class="arch-module legal-mod">HABEAS DATA</div>
+                    <div class="arch-module">COLABORADORES</div>
+                    <div class="arch-module">CONTRATOS</div>
+                    <div class="arch-module">AREAS Y CARGOS</div>
+                    <div class="arch-module critical-mod">NOMINA</div>
+                    <div class="arch-module critical-mod">SEG. SOCIAL</div>
+                    <div class="arch-module legal-mod">SG-SST</div>
+                    <div class="arch-module">ASISTENCIA</div>
+                    <div class="arch-module">TURNOS</div>
+                    <div class="arch-module">VACACIONES</div>
+                    <div class="arch-module">LICENCIAS</div>
+                    <div class="arch-module">DOCUMENTOS</div>
+                    <div class="arch-module">REPORTES</div>
+                    <div class="arch-module">DASHBOARD</div>
+                    <div class="arch-module" style="border-color: var(--accent-violet); background: rgba(139, 92, 246, 0.1);">ASISTENTE IA</div>
+                    <div class="arch-module">AUTOSERVICIO</div>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-secondary);">
+                    <span><span style="color: var(--accent-red);">■</span> Critico (alto riesgo)</span>
+                    <span><span style="color: var(--accent-amber);">■</span> Legal obligatorio</span>
+                    <span><span style="color: var(--accent-violet);">■</span> Con IA</span>
+                </div>
+            </div>
+
+            <h3>14 Modulos del Sistema</h3>
+            <div class="grid grid-3">
+                <div class="module-card amber">
+                    <span class="module-number">01</span>
+                    <div class="module-icon">🔒</div>
+                    <div class="module-title">Habeas Data</div>
+                    <div class="module-desc">Consentimientos, autorizaciones y trazabilidad de datos personales.</div>
+                    <div class="module-legal">Ley 1581 de 2012 - Multas hasta 2,000 SMLV</div>
+                </div>
+                <div class="module-card green">
+                    <span class="module-number">02</span>
+                    <div class="module-icon">👥</div>
+                    <div class="module-title">Colaboradores</div>
+                    <div class="module-desc">Gestion completa del personal: datos, contratos, historial laboral.</div>
+                    <div class="module-legal">Art. 22-24 CST</div>
+                </div>
+                <div class="module-card blue">
+                    <span class="module-number">03</span>
+                    <div class="module-icon">📄</div>
+                    <div class="module-title">Contratos</div>
+                    <div class="module-desc">Tipos de contrato, otrosies, vencimientos y renovaciones.</div>
+                    <div class="module-legal">CST - Titulo I</div>
+                </div>
+                <div class="module-card cyan">
+                    <span class="module-number">04</span>
+                    <div class="module-icon">🏢</div>
+                    <div class="module-title">Areas y Cargos</div>
+                    <div class="module-desc">Estructura organizacional, jerarquias y organigrama.</div>
+                </div>
+                <div class="module-card red critical">
+                    <span class="module-number">05</span>
+                    <div class="module-icon">💰</div>
+                    <div class="module-title">Nomina <span class="critical-badge">CRITICO</span></div>
+                    <div class="module-desc">Calculo automatico de salarios, deducciones, devengados y liquidaciones.</div>
+                    <div class="module-legal">CST, Ley 100 - Riesgos millonarios</div>
+                </div>
+                <div class="module-card red critical">
+                    <span class="module-number">06</span>
+                    <div class="module-icon">🏥</div>
+                    <div class="module-title">Seguridad Social <span class="critical-badge">CRITICO</span></div>
+                    <div class="module-desc">Aportes EPS, AFP, ARL, CCF. Integracion PILA y nomina electronica.</div>
+                    <div class="module-legal">Ley 100, UGPP</div>
+                </div>
+                <div class="module-card amber">
+                    <span class="module-number">07</span>
+                    <div class="module-icon">⚠️</div>
+                    <div class="module-title">SG-SST</div>
+                    <div class="module-desc">Sistema de seguridad y salud en el trabajo. Obligatorio para todas las empresas.</div>
+                    <div class="module-legal">Decreto 1072, Res. 0312 - Multas hasta 500 SMLV</div>
+                </div>
+                <div class="module-card violet">
+                    <span class="module-number">08</span>
+                    <div class="module-icon">⏰</div>
+                    <div class="module-title">Asistencia y Jornada</div>
+                    <div class="module-desc">Control de horas, entrada/salida, horas extras diurnas y nocturnas.</div>
+                    <div class="module-legal">Art. 161 CST</div>
+                </div>
+                <div class="module-card violet">
+                    <span class="module-number">09</span>
+                    <div class="module-icon">🔄</div>
+                    <div class="module-title">Turnos</div>
+                    <div class="module-desc">Programacion de turnos rotativos, fijos, nocturnos.</div>
+                </div>
+                <div class="module-card green">
+                    <span class="module-number">10</span>
+                    <div class="module-icon">🏖️</div>
+                    <div class="module-title">Vacaciones</div>
+                    <div class="module-desc">Calculo automatico, saldos, solicitudes y aprobaciones.</div>
+                    <div class="module-legal">Art. 186-192 CST</div>
+                </div>
+                <div class="module-card green">
+                    <span class="module-number">11</span>
+                    <div class="module-icon">📋</div>
+                    <div class="module-title">Licencias y Permisos</div>
+                    <div class="module-desc">Maternidad, paternidad, luto, calamidad, incapacidades.</div>
+                    <div class="module-legal">Normatividad Salud</div>
+                </div>
+                <div class="module-card blue">
+                    <span class="module-number">12</span>
+                    <div class="module-icon">📁</div>
+                    <div class="module-title">Documentos Laborales</div>
+                    <div class="module-desc">Repositorio digital: contratos, certificados, desprendibles, afiliaciones.</div>
+                    <div class="module-legal">Decreto 1072</div>
+                </div>
+                <div class="module-card cyan">
+                    <span class="module-number">13</span>
+                    <div class="module-icon">📊</div>
+                    <div class="module-title">Reportes</div>
+                    <div class="module-desc">Reportes legales, gerenciales, UGPP, nomina historica.</div>
+                </div>
+                <div class="module-card pink">
+                    <span class="module-number">14</span>
+                    <div class="module-icon">🤖</div>
+                    <div class="module-title">Asistente IA</div>
+                    <div class="module-desc">Consultas en lenguaje natural, alertas inteligentes, automatizaciones.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modulo Colaboradores -->
+        <section id="colaboradores">
+            <h2>4. Modulo: Gestion de Colaboradores</h2>
+
+            <p>Registro completo de empleados cumpliendo con el Codigo Sustantivo del Trabajo (CST).</p>
+
+            <h3>Ficha del Colaborador</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  FICHA DEL COLABORADOR                                    Estado: ● Activo │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌────────┐  DATOS PERSONALES                                              │
+│  │  Foto  │  Nombre: Juan Carlos Rodriguez Perez                           │
+│  │        │  Documento: CC 1.234.567.890                                   │
+│  └────────┘  Fecha Nacimiento: 15/03/1985 (39 anos)                        │
+│              Direccion: Cra 45 #67-89, Medellin                            │
+│              Telefono: 300 123 4567                                        │
+│              Email: jcrodriguez@email.com                                  │
+│              Contacto Emergencia: Maria Perez - 301 234 5678               │
+│                                                                             │
+│  ─── INFORMACION LABORAL ───────────────────────────────────────────────── │
+│  Codigo Empleado: EMP-001                                                  │
+│  Fecha Ingreso: 01/02/2020 (4 anos, 11 meses)                             │
+│  Tipo Contrato: Indefinido                                                 │
+│  Cargo: Analista de Sistemas                                               │
+│  Area: Tecnologia                                                          │
+│  Jefe Inmediato: Carlos Martinez                                           │
+│  Sede: Principal - Medellin                                                │
+│                                                                             │
+│  ─── INFORMACION SALARIAL ──────────────────────────────────────────────── │
+│  Salario Base: $3,500,000 COP                                              │
+│  Tipo Salario: Ordinario                                                   │
+│  Auxilio Transporte: Si ($162,000)                                         │
+│  Forma de Pago: Quincenal                                                  │
+│  Cuenta Bancaria: Bancolombia - Ahorros 123-456789-00                      │
+│                                                                             │
+│  ─── SEGURIDAD SOCIAL ──────────────────────────────────────────────────── │
+│  EPS: Sura                    AFP: Proteccion                              │
+│  ARL: Sura (Riesgo I)         CCF: Comfama                                 │
+│  Fondo Cesantias: Proteccion                                               │
+│                                                                             │
+│  ─── SALDOS ────────────────────────────────────────────────────────────── │
+│  Vacaciones Pendientes: 18.5 dias                                          │
+│  Cesantias Acumuladas: $2,916,666                                          │
+│  Intereses Cesantias: $350,000                                             │
+│  Prima Proporcional: $1,458,333                                            │
+│                                                                             │
+│  [Documentos] [Historial] [Nomina] [Vacaciones] [Editar] [Liquidar]        │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+
+            <h3>Campos del Modelo Colaborador</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Seccion</th>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Obligatorio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="8">Datos Personales</td><td>tipo_documento</td><td>CC/CE/TI/PA</td><td>Si</td></tr>
+                    <tr><td>numero_documento</td><td>CharField</td><td>Si</td></tr>
+                    <tr><td>nombres</td><td>CharField</td><td>Si</td></tr>
+                    <tr><td>apellidos</td><td>CharField</td><td>Si</td></tr>
+                    <tr><td>fecha_nacimiento</td><td>DateField</td><td>Si</td></tr>
+                    <tr><td>genero</td><td>M/F/O</td><td>Si</td></tr>
+                    <tr><td>estado_civil</td><td>Choice</td><td>No</td></tr>
+                    <tr><td>direccion</td><td>TextField</td><td>Si</td></tr>
+                    <tr><td rowspan="6">Info Laboral</td><td>codigo_empleado</td><td>CharField</td><td>Auto</td></tr>
+                    <tr><td>fecha_ingreso</td><td>DateField</td><td>Si</td></tr>
+                    <tr><td>tipo_contrato</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>cargo</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>area</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>jefe_inmediato</td><td>ForeignKey</td><td>No</td></tr>
+                    <tr><td rowspan="5">Seguridad Social</td><td>eps</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>afp</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>arl_riesgo</td><td>I/II/III/IV/V</td><td>Si</td></tr>
+                    <tr><td>ccf</td><td>ForeignKey</td><td>Si</td></tr>
+                    <tr><td>fondo_cesantias</td><td>ForeignKey</td><td>Si</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Tipos de Contrato (Maestro Configurable)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripcion</th>
+                        <th>Vencimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Termino Indefinido</td><td>Sin fecha de finalizacion</td><td>No aplica</td></tr>
+                    <tr><td>Termino Fijo</td><td>Duracion determinada (max 3 anos)</td><td>Alerta automatica</td></tr>
+                    <tr><td>Obra o Labor</td><td>Por proyecto especifico</td><td>Al finalizar obra</td></tr>
+                    <tr><td>Aprendizaje</td><td>Contrato SENA</td><td>Segun programa</td></tr>
+                    <tr><td>Prestacion de Servicios</td><td>Sin relacion laboral</td><td>Segun contrato</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modulo Nomina -->
+        <section id="nomina">
+            <h2>5. Modulo: Nomina y Seguridad Social</h2>
+
+            <div class="legal-alert">
+                <h5>MODULO CRITICO - Alto Riesgo Legal</h5>
+                <p>Errores en nomina generan demandas laborales, sanciones UGPP y multas millonarias. Este modulo automatiza los calculos cumpliendo 100% con la legislacion colombiana.</p>
+            </div>
+
+            <h3>Conceptos de Nomina</h3>
+
+            <h4>Devengados (Ingresos)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Base Legal</th>
+                        <th>Calculo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Salario Basico</td><td>Art. 127 CST</td><td>Segun contrato</td></tr>
+                    <tr><td>Auxilio de Transporte</td><td>Ley 15/1959</td><td>$162,000 (2024) si salario <= 2 SMLV</td></tr>
+                    <tr><td>Horas Extras Diurnas</td><td>Art. 168 CST</td><td>Valor hora x 1.25</td></tr>
+                    <tr><td>Horas Extras Nocturnas</td><td>Art. 168 CST</td><td>Valor hora x 1.75</td></tr>
+                    <tr><td>Recargo Nocturno</td><td>Art. 168 CST</td><td>Valor hora x 0.35</td></tr>
+                    <tr><td>Dominicales/Festivos</td><td>Art. 179 CST</td><td>Valor hora x 1.75</td></tr>
+                    <tr><td>Comisiones</td><td>Art. 127 CST</td><td>Segun acuerdo</td></tr>
+                    <tr><td>Bonificaciones</td><td>Art. 128 CST</td><td>Segun politica</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Deducciones</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Porcentaje</th>
+                        <th>Sobre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Aporte Salud (Empleado)</td><td>4%</td><td>IBC</td></tr>
+                    <tr><td>Aporte Pension (Empleado)</td><td>4%</td><td>IBC</td></tr>
+                    <tr><td>Fondo Solidaridad Pensional</td><td>1% adicional</td><td>Si salario > 4 SMLV</td></tr>
+                    <tr><td>Retencion en la Fuente</td><td>Tabla</td><td>Si aplica</td></tr>
+                    <tr><td>Libranzas</td><td>Variable</td><td>Segun credito</td></tr>
+                    <tr><td>Embargos</td><td>Variable</td><td>Segun juzgado</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Aportes Empleador</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Porcentaje</th>
+                        <th>Destino</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Salud (Empleador)</td><td>8.5%</td><td>EPS</td></tr>
+                    <tr><td>Pension (Empleador)</td><td>12%</td><td>AFP</td></tr>
+                    <tr><td>ARL</td><td>0.522% - 6.96%</td><td>Segun riesgo</td></tr>
+                    <tr><td>Caja Compensacion</td><td>4%</td><td>CCF</td></tr>
+                    <tr><td>ICBF</td><td>3%</td><td>Si aplica</td></tr>
+                    <tr><td>SENA</td><td>2%</td><td>Si aplica</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Prestaciones Sociales</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prestacion</th>
+                        <th>Calculo</th>
+                        <th>Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cesantias</td><td>(Salario + Aux.Transp) x dias / 360</td><td>14 Feb al fondo</td></tr>
+                    <tr><td>Intereses Cesantias</td><td>Cesantias x 12% x dias / 360</td><td>31 Enero al empleado</td></tr>
+                    <tr><td>Prima de Servicios</td><td>(Salario + Aux.Transp) x dias / 360</td><td>30 Jun y 20 Dic</td></tr>
+                    <tr><td>Vacaciones</td><td>Salario x dias / 720</td><td>Al disfrutar o liquidar</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Vista Liquidacion de Nomina</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  LIQUIDACION DE NOMINA - Enero 2026 (1ra Quincena)          [Procesar] [📥]│
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Empleado: Juan Carlos Rodriguez          Cargo: Analista de Sistemas      │
+│  Salario Base: $3,500,000                 Dias Trabajados: 15               │
+│                                                                             │
+│  ═══ DEVENGADOS ════════════════════════════════════════════════════════   │
+│  Salario Quincenal                                         $1,750,000      │
+│  Auxilio de Transporte                                        $81,000      │
+│  Horas Extras Diurnas (5 horas)                               $72,917      │
+│  Recargo Nocturno (8 horas)                                   $40,833      │
+│  Comision Ventas                                             $200,000      │
+│                                                             ──────────      │
+│  TOTAL DEVENGADO                                           $2,144,750      │
+│                                                                             │
+│  ═══ DEDUCCIONES ═══════════════════════════════════════════════════════   │
+│  Aporte Salud (4%)                                           -$82,550      │
+│  Aporte Pension (4%)                                         -$82,550      │
+│  Retencion en la Fuente                                           $0      │
+│  Libranza Banco                                             -$150,000      │
+│                                                             ──────────      │
+│  TOTAL DEDUCCIONES                                          -$315,100      │
+│                                                                             │
+│  ═══════════════════════════════════════════════════════════════════════   │
+│  NETO A PAGAR                                              $1,829,650      │
+│  ═══════════════════════════════════════════════════════════════════════   │
+│                                                                             │
+│  ─── APORTES EMPLEADOR (Informativo) ───────────────────────────────────   │
+│  Salud (8.5%): $175,418 | Pension (12%): $247,650 | ARL (0.522%): $10,775  │
+│  CCF (4%): $82,550 | ICBF (3%): $61,913 | SENA (2%): $41,275               │
+│                                                                             │
+│  [Aprobar] [Rechazar] [Editar] [Ver Desprendible] [Enviar por Email]       │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+
+            <h3>Integraciones</h3>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>PILA (Planilla Integrada)</h4>
+                    <ul>
+                        <li>Generacion automatica del archivo plano</li>
+                        <li>Validacion de estructura antes de enviar</li>
+                        <li>Integracion con operadores (Aportes en Linea, SOI, Mi Planilla)</li>
+                        <li>Historico de planillas enviadas</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Nomina Electronica DIAN</h4>
+                    <ul>
+                        <li>Generacion documento soporte de nomina</li>
+                        <li>Firma electronica</li>
+                        <li>Envio automatico a la DIAN</li>
+                        <li>Notas de ajuste</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modulo SG-SST -->
+        <section id="sgsst">
+            <h2>6. Modulo: SG-SST (Seguridad y Salud en el Trabajo)</h2>
+
+            <div class="legal-alert">
+                <h5>OBLIGATORIO - Decreto 1072 de 2015 y Resolucion 0312 de 2019</h5>
+                <p>Todas las empresas, incluso microempresas, deben implementar el SG-SST. Multas hasta 500 SMLV por incumplimiento.</p>
+            </div>
+
+            <h3>Componentes del SG-SST</h3>
+            <div class="grid grid-2">
+                <div class="module-card amber">
+                    <div class="module-icon">📋</div>
+                    <div class="module-title">Matriz de Riesgos</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Identificacion de peligros</li>
+                            <li>Valoracion de riesgos (GTC 45)</li>
+                            <li>Controles existentes</li>
+                            <li>Plan de accion</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card green">
+                    <div class="module-icon">🩺</div>
+                    <div class="module-title">Examenes Medicos</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Ingreso (preocupacional)</li>
+                            <li>Periodicos</li>
+                            <li>Retiro (egreso)</li>
+                            <li>Alertas de vencimiento</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card blue">
+                    <div class="module-icon">📚</div>
+                    <div class="module-title">Capacitaciones</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Induccion y reinduccion</li>
+                            <li>50 horas SGSST (responsable)</li>
+                            <li>Brigadas de emergencia</li>
+                            <li>Registro de asistencia</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card red">
+                    <div class="module-icon">🚨</div>
+                    <div class="module-title">Accidentes e Incidentes</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Reporte FURAT a ARL</li>
+                            <li>Investigacion de accidentes</li>
+                            <li>Lecciones aprendidas</li>
+                            <li>Indicadores AT/EL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card violet">
+                    <div class="module-icon">🦺</div>
+                    <div class="module-title">EPP</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Inventario de EPP</li>
+                            <li>Entrega con acta</li>
+                            <li>Control de reposicion</li>
+                            <li>Capacitacion de uso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card cyan">
+                    <div class="module-icon">📁</div>
+                    <div class="module-title">Evidencias para ARL</div>
+                    <div class="module-desc">
+                        <ul>
+                            <li>Documentos del sistema</li>
+                            <li>Actas de reunion COPASST</li>
+                            <li>Plan de emergencias</li>
+                            <li>Autoevaluacion anual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Estandares Minimos Resolucion 0312</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tamano Empresa</th>
+                        <th>Empleados</th>
+                        <th>Estandares</th>
+                        <th>Responsable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Microempresa</td><td>1-10</td><td>7 estandares</td><td>Empleador o contratado</td></tr>
+                    <tr><td>Pequena</td><td>11-50</td><td>21 estandares</td><td>Tecnico en SST</td></tr>
+                    <tr><td>Mediana/Grande</td><td>>50</td><td>60 estandares</td><td>Profesional SST + Licencia</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modulo Asistencia -->
+        <section id="asistencia">
+            <h2>7. Modulo: Control de Asistencia y Jornada</h2>
+
+            <p>Registro de horas trabajadas cumpliendo Art. 161 CST. Soporte clave en conflictos laborales.</p>
+
+            <h3>Funcionalidades</h3>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Registro de Tiempo</h4>
+                    <ul>
+                        <li>Marcacion entrada/salida</li>
+                        <li>App movil con geolocalizacion</li>
+                        <li>Integracion biometricos</li>
+                        <li>QR en sede</li>
+                        <li>Registro manual supervisado</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Control de Horas Extras</h4>
+                    <ul>
+                        <li>Calculo automatico segun jornada</li>
+                        <li>Diurnas vs Nocturnas</li>
+                        <li>Dominicales y festivos</li>
+                        <li>Limite legal (2 horas/dia)</li>
+                        <li>Autorizacion previa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Modulo de Turnos</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  PROGRAMACION DE TURNOS - Semana 20-26 Enero 2026                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Area: Produccion                              [+ Turno] [Copiar Semana]   │
+│                                                                             │
+│  ┌─────────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐       │
+│  │Empleado │  Lun  │  Mar  │  Mie  │  Jue  │  Vie  │  Sab  │  Dom  │       │
+│  ├─────────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤       │
+│  │J.Rodrig │ 6-14  │ 6-14  │ 6-14  │ 6-14  │ 6-14  │ DESC  │ DESC  │       │
+│  │M.Lopez  │ 14-22 │ 14-22 │ 14-22 │ 14-22 │ 14-22 │ DESC  │ DESC  │       │
+│  │C.Gomez  │ 22-6  │ 22-6  │ 22-6  │ DESC  │ DESC  │ 22-6  │ 22-6  │       │
+│  │A.Perez  │ DESC  │ DESC  │ 6-14  │ 6-14  │ 6-14  │ 6-14  │ 6-14  │       │
+│  └─────────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┘       │
+│                                                                             │
+│  LEYENDA: 6-14 = Manana | 14-22 = Tarde | 22-6 = Noche | DESC = Descanso   │
+│                                                                             │
+│  Alertas:                                                                   │
+│  ⚠️ C.Gomez tiene 48+ horas esta semana (revisar recargos nocturnos)       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+
+            <h3>Tipos de Jornada (Maestro)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Horas/Semana</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ordinaria</td><td>48</td><td>Jornada completa diurna</td></tr>
+                    <tr><td>Nocturna</td><td>42</td><td>Entre 9pm y 6am</td></tr>
+                    <tr><td>Medio Tiempo</td><td>24</td><td>Media jornada</td></tr>
+                    <tr><td>Por Turnos</td><td>48</td><td>Rotacion manana/tarde/noche</td></tr>
+                    <tr><td>Flexible</td><td>48</td><td>Horario variable acordado</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modulo Vacaciones -->
+        <section id="vacaciones">
+            <h2>8. Modulo: Vacaciones, Licencias y Permisos</h2>
+
+            <p>Automatiza el calculo y control de ausencias cumpliendo Art. 186-192 CST.</p>
+
+            <h3>Calculo de Vacaciones</h3>
+            <div class="card">
+                <p><strong>Formula:</strong> 15 dias habiles por cada ano trabajado</p>
+                <p><strong>Calculo:</strong> (Salario basico x dias trabajados) / 720</p>
+                <p><strong>Acumulacion maxima:</strong> 2 anos (luego son obligatorias)</p>
+            </div>
+
+            <h3>Vista de Solicitud</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  SOLICITUD DE VACACIONES                                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Empleado: Juan Carlos Rodriguez                                            │
+│  Saldo Actual: 18.5 dias                                                   │
+│                                                                             │
+│  ─── NUEVA SOLICITUD ───────────────────────────────────────────────────── │
+│                                                                             │
+│  Fecha Inicio: [15/02/2026 📅]    Fecha Fin: [28/02/2026 📅]              │
+│                                                                             │
+│  Dias Solicitados: 10 dias habiles                                         │
+│  Saldo Restante: 8.5 dias                                                  │
+│                                                                             │
+│  Valor a Pagar: $1,166,667 COP                                             │
+│  (Salario base $3,500,000 x 10 dias / 30)                                  │
+│                                                                             │
+│  [ ] Incluir pago anticipado de prima (proporcional)                       │
+│                                                                             │
+│  Observaciones: ________________________________________________            │
+│                                                                             │
+│  Aprobador: Carlos Martinez (Jefe inmediato)                               │
+│                                                                             │
+│  [Enviar Solicitud]  [Cancelar]                                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+
+            <h3>Tipos de Licencias (Maestro Configurable)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Duracion</th>
+                        <th>Remunerada</th>
+                        <th>Base Legal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Maternidad</td><td>18 semanas</td><td>Si (EPS)</td><td>Ley 1822/2017</td></tr>
+                    <tr><td>Paternidad</td><td>2 semanas</td><td>Si (EPS)</td><td>Ley 2114/2021</td></tr>
+                    <tr><td>Luto</td><td>5 dias</td><td>Si (Empleador)</td><td>Ley 1280/2009</td></tr>
+                    <tr><td>Calamidad Domestica</td><td>Variable</td><td>Si</td><td>Art. 57 CST</td></tr>
+                    <tr><td>Incapacidad General</td><td>Segun EPS</td><td>Si (EPS/Empleador)</td><td>Ley 100</td></tr>
+                    <tr><td>Licencia No Remunerada</td><td>Acordada</td><td>No</td><td>Acuerdo</td></tr>
+                    <tr><td>Permiso Sindical</td><td>Variable</td><td>Si</td><td>Art. 57 CST</td></tr>
+                    <tr><td>Cita Medica</td><td>Tiempo necesario</td><td>Si</td><td>Jurisprudencia</td></tr>
+                    <tr><td>Matrimonio</td><td>5 dias (si aplica)</td><td>Segun politica</td><td>Convencion</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modulo Documentos -->
+        <section id="documentos">
+            <h2>9. Modulo: Documentos Laborales</h2>
+
+            <p>Repositorio digital centralizado de todos los documentos del empleado. Cumple Decreto 1072.</p>
+
+            <h3>Documentos por Empleado</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Documentos</th>
+                        <th>Obligatorio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="4">Ingreso</td><td>Hoja de vida</td><td>Si</td></tr>
+                    <tr><td>Fotocopia documento identidad</td><td>Si</td></tr>
+                    <tr><td>Certificados de estudio</td><td>Segun cargo</td></tr>
+                    <tr><td>Certificados laborales anteriores</td><td>Recomendado</td></tr>
+                    <tr><td rowspan="4">Contractuales</td><td>Contrato de trabajo</td><td>Si</td></tr>
+                    <tr><td>Otrosies</td><td>Si aplica</td></tr>
+                    <tr><td>Clausulas adicionales</td><td>Si aplica</td></tr>
+                    <tr><td>Acuerdo de confidencialidad</td><td>Recomendado</td></tr>
+                    <tr><td rowspan="4">Seguridad Social</td><td>Afiliacion EPS</td><td>Si</td></tr>
+                    <tr><td>Afiliacion AFP</td><td>Si</td></tr>
+                    <tr><td>Afiliacion ARL</td><td>Si</td></tr>
+                    <tr><td>Afiliacion CCF</td><td>Si</td></tr>
+                    <tr><td rowspan="3">SG-SST</td><td>Examen medico ingreso</td><td>Si</td></tr>
+                    <tr><td>Induccion SST firmada</td><td>Si</td></tr>
+                    <tr><td>Entrega EPP firmada</td><td>Si aplica</td></tr>
+                    <tr><td rowspan="3">Habeas Data</td><td>Autorizacion tratamiento datos</td><td>Si</td></tr>
+                    <tr><td>Autorizacion biometricos</td><td>Si aplica</td></tr>
+                    <tr><td>Autorizacion imagen</td><td>Recomendado</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Funcionalidades</h3>
+            <div class="feature-item">
+                <span class="feature-icon">📤</span>
+                <div class="feature-text">
+                    <h5>Carga de Documentos</h5>
+                    <p>Subida individual o masiva. Formatos PDF, imagen, Word.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">⏰</span>
+                <div class="feature-text">
+                    <h5>Alertas de Vencimiento</h5>
+                    <p>Notificaciones 30, 15 y 7 dias antes para contratos, examenes, certificaciones.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📝</span>
+                <div class="feature-text">
+                    <h5>Generacion Automatica</h5>
+                    <p>Certificados laborales, desprendibles, constancias, cartas.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔍</span>
+                <div class="feature-text">
+                    <h5>Busqueda y Filtros</h5>
+                    <p>Encontrar documentos por empleado, tipo, fecha, estado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modulo Habeas Data -->
+        <section id="habeasdata">
+            <h2>10. Modulo: Proteccion de Datos (Habeas Data)</h2>
+
+            <div class="legal-alert">
+                <h5>OBLIGATORIO - Ley 1581 de 2012</h5>
+                <p>Sin este modulo hay riesgo legal alto. Multas de la SIC hasta 2,000 SMLV ($2,600 millones COP aprox).</p>
+            </div>
+
+            <h3>Requisitos Legales</h3>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Debe Implementar</h4>
+                    <ul>
+                        <li>Autorizacion de tratamiento de datos</li>
+                        <li>Politica de privacidad publicada</li>
+                        <li>Registro de consentimientos</li>
+                        <li>Control de acceso a informacion</li>
+                        <li>Identificacion de datos sensibles</li>
+                        <li>Trazabilidad de quien accede</li>
+                        <li>Procedimiento para ejercer derechos ARCO</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Derechos del Titular (ARCO)</h4>
+                    <ul>
+                        <li><strong>A</strong>cceso: Conocer sus datos</li>
+                        <li><strong>R</strong>ectificacion: Corregir datos erroneos</li>
+                        <li><strong>C</strong>ancelacion: Eliminar datos</li>
+                        <li><strong>O</strong>posicion: Oponerse al tratamiento</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Funcionalidades del Modulo</h3>
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <div class="feature-text">
+                    <h5>Registro de Consentimientos</h5>
+                    <p>Almacena fecha, hora, IP y documento de autorizacion firmado por cada empleado.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔐</span>
+                <div class="feature-text">
+                    <h5>Control de Acceso</h5>
+                    <p>Roles y permisos granulares. Quien puede ver que informacion.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📜</span>
+                <div class="feature-text">
+                    <h5>Auditoria de Accesos</h5>
+                    <p>Log de quien accedio a que datos, cuando y desde donde.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🚨</span>
+                <div class="feature-text">
+                    <h5>Datos Sensibles</h5>
+                    <p>Marcado especial para datos de salud, biometricos, sindicales. Doble autorizacion.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modulo Reportes -->
+        <section id="reportes">
+            <h2>11. Modulo: Reportes Legales y Gerenciales</h2>
+
+            <h3>Reportes Disponibles</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Reporte</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="4">Legales/UGPP</td><td>Planilla PILA</td><td>Aportes seguridad social</td></tr>
+                    <tr><td>Nomina Electronica DIAN</td><td>Soporte de pago</td></tr>
+                    <tr><td>Certificado Ingresos y Retenciones</td><td>Declaracion renta empleados</td></tr>
+                    <tr><td>Provision Prestaciones</td><td>Contabilidad</td></tr>
+                    <tr><td rowspan="4">SG-SST</td><td>Indicadores AT/EL</td><td>Auditoria ARL</td></tr>
+                    <tr><td>Matriz de Riesgos</td><td>Evidencia SG-SST</td></tr>
+                    <tr><td>Plan de Capacitacion</td><td>Cumplimiento</td></tr>
+                    <tr><td>Autoevaluacion Estandares</td><td>Resolucion 0312</td></tr>
+                    <tr><td rowspan="4">Gerenciales</td><td>Headcount por Area</td><td>Planeacion</td></tr>
+                    <tr><td>Rotacion de Personal</td><td>Indicador RH</td></tr>
+                    <tr><td>Costo de Nomina</td><td>Presupuesto</td></tr>
+                    <tr><td>Vacaciones Pendientes</td><td>Provision</td></tr>
+                    <tr><td rowspan="3">Operativos</td><td>Cumpleanos del Mes</td><td>Bienestar</td></tr>
+                    <tr><td>Vencimiento Contratos</td><td>Renovaciones</td></tr>
+                    <tr><td>Vencimiento Examenes</td><td>SG-SST</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Dashboard Gerencial</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DASHBOARD RRHH - Enero 2026                                    [Exportar] │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐           │
+│  │ EMPLEADOS   │ │ NOMINA MES  │ │  ROTACION   │ │ VACACIONES  │           │
+│  │    127      │ │  $487M      │ │    2.3%     │ │  456 dias   │           │
+│  │  ↑ +3       │ │  ↑ +$12M    │ │  ↓ -0.5%    │ │  pendientes │           │
+│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘           │
+│                                                                             │
+│  ═══ DISTRIBUCION POR AREA ═════════════════════════════════════════════   │
+│  Produccion      ████████████████████████████  45 (35%)                    │
+│  Administracion  ████████████████             32 (25%)                     │
+│  Comercial       ████████████                 25 (20%)                     │
+│  Tecnologia      ████████                     15 (12%)                     │
+│  RRHH            ████                         10 (8%)                      │
+│                                                                             │
+│  ═══ ALERTAS ACTIVAS ═══════════════════════════════════════════════════   │
+│  ⚠️ 3 contratos vencen en 15 dias                                          │
+│  ⚠️ 5 examenes medicos proximos a vencer                                   │
+│  ⚠️ 2 empleados con vacaciones acumuladas > 30 dias                        │
+│  ✅ Nomina Enero procesada y aprobada                                      │
+│  ✅ PILA Diciembre enviada correctamente                                   │
+│                                                                             │
+│  ═══ PROXIMOS EVENTOS ══════════════════════════════════════════════════   │
+│  📅 30 Ene - Vencimiento pago nomina electronica                           │
+│  📅 31 Ene - Pago intereses cesantias                                      │
+│  📅 14 Feb - Consignacion cesantias a fondos                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+        </section>
+
+        <!-- Modulo IA -->
+        <section id="ia">
+            <h2>12. Inteligencia Artificial</h2>
+
+            <p>Asistente inteligente que hace la plataforma autonoma y facil de usar.</p>
+
+            <h3>Funcionalidades IA</h3>
+
+            <div class="ai-feature">
+                <h5>🤖 Asistente de Consultas (Chatbot)</h5>
+                <p>Los empleados y administradores pueden hacer preguntas en lenguaje natural:</p>
+                <ul>
+                    <li>"Cuantos dias de vacaciones me quedan?"</li>
+                    <li>"Cuando vence el contrato de Maria Lopez?"</li>
+                    <li>"Cual fue el costo de nomina del area comercial en diciembre?"</li>
+                    <li>"Quienes tienen examenes medicos vencidos?"</li>
+                    <li>"Genera un certificado laboral para Juan Rodriguez"</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature">
+                <h5>🔔 Alertas Inteligentes</h5>
+                <p>El sistema detecta automaticamente situaciones y notifica:</p>
+                <ul>
+                    <li>Contratos proximos a vencer (30, 15, 7 dias)</li>
+                    <li>Empleados con vacaciones acumuladas excesivas</li>
+                    <li>Anomalias en marcaciones de asistencia</li>
+                    <li>Fechas limite legales (PILA, cesantias, prima)</li>
+                    <li>Documentos faltantes en expediente</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature">
+                <h5>📊 Analisis Predictivo</h5>
+                <p>Modelos de ML para predecir y prevenir:</p>
+                <ul>
+                    <li>Riesgo de rotacion por empleado</li>
+                    <li>Proyeccion de costos de nomina</li>
+                    <li>Tendencias de ausentismo</li>
+                    <li>Identificacion de patrones anomalos</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature">
+                <h5>✍️ Generacion de Documentos</h5>
+                <p>IA genera automaticamente:</p>
+                <ul>
+                    <li>Certificados laborales personalizados</li>
+                    <li>Cartas de terminacion de contrato</li>
+                    <li>Memorandos y comunicados</li>
+                    <li>Actas de reunion</li>
+                    <li>Descripciones de cargo</li>
+                </ul>
+            </div>
+
+            <div class="ai-feature">
+                <h5>🎯 Asistente de Cumplimiento Legal</h5>
+                <p>Valida automaticamente:</p>
+                <ul>
+                    <li>Calculos de nomina contra CST</li>
+                    <li>Cumplimiento SG-SST segun Res. 0312</li>
+                    <li>Requisitos de documentacion por empleado</li>
+                    <li>Alertas de cambios normativos</li>
+                </ul>
+            </div>
+
+            <h3>Ejemplo de Interaccion con IA</h3>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  🤖 ASISTENTE TALENTOPYME                                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Usuario: "Cuanto le debo pagar de liquidacion a Maria Lopez si la         │
+│            despido hoy sin justa causa?"                                   │
+│                                                                             │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                             │
+│  Asistente: Basado en los datos de Maria Lopez:                            │
+│                                                                             │
+│  📋 INFORMACION DEL EMPLEADO                                               │
+│  • Fecha ingreso: 15/03/2022 (2 anos, 10 meses)                           │
+│  • Salario: $2,800,000 + Aux. Transporte $162,000                         │
+│  • Tipo contrato: Indefinido                                               │
+│                                                                             │
+│  💰 LIQUIDACION ESTIMADA                                                   │
+│  ┌────────────────────────────────────┬──────────────┐                     │
+│  │ Concepto                           │ Valor        │                     │
+│  ├────────────────────────────────────┼──────────────┤                     │
+│  │ Salario proporcional (24 dias)     │ $2,240,000   │                     │
+│  │ Cesantias                          │ $2,766,556   │                     │
+│  │ Intereses cesantias                │ $33,199      │                     │
+│  │ Prima proporcional                 │ $1,383,278   │                     │
+│  │ Vacaciones (12.5 dias)             │ $1,166,667   │                     │
+│  │ Indemnizacion (Art. 64 CST)        │ $2,962,000   │                     │
+│  ├────────────────────────────────────┼──────────────┤                     │
+│  │ TOTAL LIQUIDACION                  │ $10,551,700  │                     │
+│  └────────────────────────────────────┴──────────────┘                     │
+│                                                                             │
+│  ⚠️ IMPORTANTE: La indemnizacion aplica por despido sin justa causa.       │
+│  Para mas de 1 ano: 20 dias por el primer ano + 15 dias por cada ano      │
+│  adicional (Art. 64 CST).                                                  │
+│                                                                             │
+│  [Generar Liquidacion Formal] [Ver Detalle Calculo] [Consultar Abogado]   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+        </section>
+
+        <!-- Maestros Configurables -->
+        <section>
+            <h2>13. Maestros Configurables</h2>
+
+            <p>Tablas parametrizables que permiten adaptar el sistema a cada empresa sin desarrollo.</p>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>Estructura Organizacional</h4>
+                    <ul>
+                        <li>Sedes / Sucursales</li>
+                        <li>Areas / Departamentos</li>
+                        <li>Cargos / Posiciones</li>
+                        <li>Niveles jerarquicos</li>
+                        <li>Centros de costo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Parametros Laborales</h4>
+                    <ul>
+                        <li>Tipos de contrato</li>
+                        <li>Tipos de jornada</li>
+                        <li>Turnos</li>
+                        <li>Motivos de retiro</li>
+                        <li>Tipos de ausencia</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Seguridad Social</h4>
+                    <ul>
+                        <li>EPS activas</li>
+                        <li>AFP activas</li>
+                        <li>ARL (tarifas por riesgo)</li>
+                        <li>Cajas de compensacion</li>
+                        <li>Fondos de cesantias</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Nomina</h4>
+                    <ul>
+                        <li>Conceptos devengados</li>
+                        <li>Conceptos deducidos</li>
+                        <li>Formulas de calculo</li>
+                        <li>Calendario de pagos</li>
+                        <li>Bancos para dispersion</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Documentos</h4>
+                    <ul>
+                        <li>Tipos de documento</li>
+                        <li>Plantillas de certificados</li>
+                        <li>Plantillas de contratos</li>
+                        <li>Checklist por proceso</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Sistema</h4>
+                    <ul>
+                        <li>Roles y permisos</li>
+                        <li>Flujos de aprobacion</li>
+                        <li>Notificaciones</li>
+                        <li>Integraciones activas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Autoservicio -->
+        <section>
+            <h2>14. Portal de Autoservicio (Empleados)</h2>
+
+            <p>Cada empleado tiene acceso a su informacion personal reduciendo carga operativa de RRHH.</p>
+
+            <h3>Funcionalidades del Empleado</h3>
+            <div class="grid grid-2">
+                <div class="feature-item">
+                    <span class="feature-icon">📄</span>
+                    <div class="feature-text">
+                        <h5>Mis Documentos</h5>
+                        <p>Ver y descargar desprendibles, certificados, contrato.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏖️</span>
+                    <div class="feature-text">
+                        <h5>Solicitar Vacaciones</h5>
+                        <p>Ver saldo, solicitar y hacer seguimiento.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📋</span>
+                    <div class="feature-text">
+                        <h5>Solicitar Permisos</h5>
+                        <p>Licencias, permisos, incapacidades.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⏰</span>
+                    <div class="feature-text">
+                        <h5>Mi Asistencia</h5>
+                        <p>Ver marcaciones, horas extras, turnos.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <div class="feature-text">
+                        <h5>Mi Nomina</h5>
+                        <p>Historico de pagos y desprendibles.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✏️</span>
+                    <div class="feature-text">
+                        <h5>Actualizar Datos</h5>
+                        <p>Direccion, telefono, contacto emergencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap">
+            <h2>15. Roadmap de Desarrollo</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-phase">FASE 1: MVP Core (Semanas 1-6)</div>
+                    <div class="timeline-content">
+                        <h4>Base del Sistema</h4>
+                        <ul>
+                            <li>Setup proyecto Django + React + PostgreSQL</li>
+                            <li>Autenticacion y roles basicos</li>
+                            <li>Modulo Colaboradores completo</li>
+                            <li>Maestros: Areas, Cargos, Tipos Contrato</li>
+                            <li>Modulo Contratos con alertas</li>
+                            <li>Habeas Data basico</li>
+                        </ul>
+                        <p><span class="badge badge-green">Entregable:</span> Gestion basica de empleados funcionando</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">FASE 2: Nomina (Semanas 7-12)</div>
+                    <div class="timeline-content">
+                        <h4>Motor de Nomina</h4>
+                        <ul>
+                            <li>Conceptos devengados y deducciones</li>
+                            <li>Calculo automatico de nomina</li>
+                            <li>Liquidacion de prestaciones</li>
+                            <li>Generacion archivo PILA</li>
+                            <li>Nomina electronica DIAN</li>
+                            <li>Desprendibles de pago</li>
+                        </ul>
+                        <p><span class="badge badge-red">Entregable:</span> Nomina 100% funcional con integracion PILA</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">FASE 3: Tiempo y Ausencias (Semanas 13-16)</div>
+                    <div class="timeline-content">
+                        <h4>Control de Asistencia</h4>
+                        <ul>
+                            <li>Modulo de asistencia y marcaciones</li>
+                            <li>Turnos y jornadas</li>
+                            <li>Horas extras automaticas</li>
+                            <li>Vacaciones y licencias</li>
+                            <li>Flujos de aprobacion</li>
+                            <li>Calendario de ausencias</li>
+                        </ul>
+                        <p><span class="badge badge-blue">Entregable:</span> Gestion completa de tiempo</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">FASE 4: SG-SST y Documentos (Semanas 17-20)</div>
+                    <div class="timeline-content">
+                        <h4>Cumplimiento Legal</h4>
+                        <ul>
+                            <li>Modulo SG-SST completo</li>
+                            <li>Matriz de riesgos</li>
+                            <li>Gestion documental</li>
+                            <li>Generacion de certificados</li>
+                            <li>Repositorio por empleado</li>
+                            <li>Reportes legales</li>
+                        </ul>
+                        <p><span class="badge badge-amber">Entregable:</span> Cumplimiento Decreto 1072 y Res. 0312</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">FASE 5: IA y Autoservicio (Semanas 21-24)</div>
+                    <div class="timeline-content">
+                        <h4>Inteligencia y Autonomia</h4>
+                        <ul>
+                            <li>Asistente IA (chatbot)</li>
+                            <li>Alertas inteligentes</li>
+                            <li>Portal autoservicio empleados</li>
+                            <li>App movil (PWA)</li>
+                            <li>Dashboard ejecutivo</li>
+                            <li>Analisis predictivo basico</li>
+                        </ul>
+                        <p><span class="badge badge-violet">Entregable:</span> Plataforma autonoma con IA</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Stack Tecnologico</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Tecnologia</th>
+                        <th>Justificacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Backend</td><td>Django + DRF</td><td>Robusto, seguro, rapido desarrollo</td></tr>
+                    <tr><td>Frontend</td><td>React + TailwindCSS</td><td>Moderno, responsive, componentizado</td></tr>
+                    <tr><td>Base de Datos</td><td>PostgreSQL</td><td>Relacional, confiable, escalable</td></tr>
+                    <tr><td>Cache</td><td>Redis</td><td>Sesiones, cache de consultas</td></tr>
+                    <tr><td>Tareas</td><td>Celery</td><td>Procesos en background (nomina, reportes)</td></tr>
+                    <tr><td>Storage</td><td>GCS / S3</td><td>Documentos y archivos</td></tr>
+                    <tr><td>IA</td><td>OpenAI / Claude API</td><td>Asistente y generacion</td></tr>
+                    <tr><td>Deploy</td><td>GCP Cloud Run</td><td>Escalable, economico</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modelo de Negocio -->
+        <section>
+            <h2>16. Modelo de Negocio Sugerido</h2>
+
+            <div class="pricing-compare">
+                <div class="pricing-card">
+                    <h4>Starter</h4>
+                    <div class="price">$49,900</div>
+                    <div class="period">COP / empleado / mes</div>
+                    <ul>
+                        <li>Hasta 20 empleados</li>
+                        <li>Colaboradores y contratos</li>
+                        <li>Vacaciones y permisos</li>
+                        <li>Documentos basicos</li>
+                        <li>Soporte email</li>
+                    </ul>
+                </div>
+                <div class="pricing-card highlight">
+                    <h4>Professional</h4>
+                    <div class="price">$79,900</div>
+                    <div class="period">COP / empleado / mes</div>
+                    <ul>
+                        <li>Hasta 100 empleados</li>
+                        <li>Todo Starter +</li>
+                        <li>Nomina completa</li>
+                        <li>PILA automatico</li>
+                        <li>SG-SST basico</li>
+                        <li>Asistente IA</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h4>Enterprise</h4>
+                    <div class="price">$99,900</div>
+                    <div class="period">COP / empleado / mes</div>
+                    <ul>
+                        <li>Empleados ilimitados</li>
+                        <li>Todo Professional +</li>
+                        <li>Nomina electronica DIAN</li>
+                        <li>SG-SST completo</li>
+                        <li>Integraciones custom</li>
+                        <li>API acceso</li>
+                        <li>Soporte dedicado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: var(--text-secondary);">
+                Comparado con soluciones del mercado ($89,900 - $150,000 COP/usuario/mes), TalentoPYME ofrece funcionalidad completa a precio competitivo.
+            </p>
+        </section>
+
+        <!-- Conclusion -->
+        <section>
+            <h2>Conclusion</h2>
+
+            <div class="card">
+                <p><strong>TalentoPYME</strong> resuelve el problema de las PYMEs colombianas que manejan su personal en Excel, ofreciendo:</p>
+                <div class="grid grid-3">
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Cumplimiento Legal</h5>
+                            <p>100% alineado con CST, Ley 100, Decreto 1072</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Automatizacion</h5>
+                            <p>Nomina, PILA, alertas sin intervencion manual</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Reduccion de Riesgos</h5>
+                            <p>Evita multas UGPP, SIC, MinTrabajo</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Facil de Usar</h5>
+                            <p>Interfaz moderna, asistente IA, autoservicio</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Configurable</h5>
+                            <p>Maestros adaptables a cada empresa</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✅</span>
+                        <div class="feature-text">
+                            <h5>Escalable</h5>
+                            <p>Crece con la empresa, multi-sede</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>TalentoPYME</strong> - Plan de Aplicacion v1.0</p>
+        <p>Sistema de Gestion de RRHH para PYMEs Colombianas</p>
+        <p>Stack: Django + React + PostgreSQL + IA</p>
+        <p>Enero 2026</p>
+    </footer>
+
+</body>
+</html>
